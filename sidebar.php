@@ -25,7 +25,7 @@
             font-size: 14px;
             line-height: 1.4;
             margin-left: 30px;
-            margin-top: 4   0px;
+            margin-top: 4 0px;
         }
 
         nav {
@@ -87,6 +87,7 @@
             content: "Profile";
             line-height: 73px;
         }
+
         nav ul li:nth-child(6):after {
             content: "Sign out";
             line-height: 73px;
@@ -324,7 +325,83 @@
             border-width: 0 16px 9px 16px;
             border-color: transparent transparent white transparent;
         }
-        </style>
+
+        .gg-profile,
+        .gg-profile::after,
+        .gg-profile::before {
+            display: block;
+            box-sizing: border-box;
+            border: 2px solid;
+            border-radius: 100px
+        }
+
+        .gg-profile {
+            overflow: hidden;
+            transform: scale(var(--ggs, 1));
+            width: 22px;
+            height: 22px;
+            position: relative
+        }
+
+        .gg-profile::after,
+        .gg-profile::before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 5px;
+            width: 8px;
+            height: 8px
+        }
+
+        .gg-profile::after {
+            border-radius: 200px;
+            top: 11px;
+            left: 0px;
+            width: 18px;
+            height: 18px
+        }
+
+        .gg-log-out {
+            box-sizing: border-box;
+            position: relative;
+            display: block;
+            width: 6px;
+            height: 16px;
+            border: 2px solid;
+            transform: scale(var(--ggs, 1));
+            border-right: 0;
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+            margin-left: -10px
+        }
+
+        .gg-log-out::after,
+        .gg-log-out::before {
+            content: "";
+            display: block;
+            box-sizing: border-box;
+            position: absolute
+        }
+
+        .gg-log-out::after {
+            border-top: 2px solid;
+            border-left: 2px solid;
+            transform: rotate(-45deg);
+            width: 8px;
+            height: 8px;
+            left: 4px;
+            bottom: 2px
+        }
+
+        .gg-log-out::before {
+            border-radius: 3px;
+            width: 10px;
+            height: 2px;
+            background: currentColor;
+            left: 5px;
+            bottom: 5px
+        }
+    </style>
 </head>
 
 <body>
@@ -362,17 +439,17 @@
                 </div>
             </li>
             <li>
-                <div class="fa fa-user" style="font-size:30px"></div>
+                <div><i class="gg-profile"></i></div>
                 </div>
                 </div>
             </li>
             <li>
-                <div class="fa fa-sign-out" style="font-size:30px"></div>
+                <div><i class="gg-log-out"></i></div>
                 </div>
                 </div>
             </li>
         </ul>
     </nav>
-    </body>
+</body>
 
 </html>
