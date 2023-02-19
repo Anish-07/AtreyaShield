@@ -50,7 +50,7 @@
       <div class="col-lg-6 con1">
         <br><br>
         <h1 style="color: #CCFF00;">What is AtreyaShield?</h1>
-        <div class="cont2" style="font-size: 30px; color: #CCFF00;">
+        <div class="cont2" style="font-size: 22px; color: #CCFF00;">
           It is the secure and easy way to share files online. At Atreyashield, our mission is to make file sharing
           simple and secure, so that you can focus on what really matters. With our user-friendly platform, you can
           share your files with confidence, knowing that your data is protected with the latest encryption
@@ -58,17 +58,17 @@
         </div>
       </div>
       <div class="col-lg-6">
-        <img src="DALL·E.png" width="75%" style="margin-left: 20px; width: 94%; height: 75%;">
+        <img src="HomePageImg3.png" width="75%" style="margin-left: 20px; width: 94%; height: 75%;">
       </div>
       <!-- HTML !-->
     </div>
   </div>
   <!--WHY CHOOSE ATREYASHIELD-->
-  <div class="container" style="margin-top: -10px;">
+  <div class="container" style="margin-top: -15px;">
     <div class="row">
       <div class="con1">
         <h1 style="color: #CCFF00;">Why choose us?</h1>
-        <div class="cont2" style="font-size: 18px; color: #CCFF00;">
+        <div class="cont2" style="font-size: 20px; color: #CCFF00;">
           There are multiple reasons to choose us but following are the few main reasons why you should use our service.
           <ol>
             <li><b>Secure:</b> We take the security of your data seriously. All files are encrypted during transit and

@@ -1,7 +1,4 @@
-<?php include('sidebar.php');
-include('session_manager.php');
-$user_id=$_SESSION['id'];
-?>
+<?php include('sidebar.php') ?>
 <!DOCTYPE html>
 <html>
 
@@ -14,11 +11,6 @@ $user_id=$_SESSION['id'];
             -moz-osx-font-smoothing: grayscale;
             text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
             text-rendering: optimizeLegibility;
-            margin-left: 20px;
-        }
-
-        body{
-            margin-top: 0px;
         }
 
 
@@ -124,7 +116,7 @@ $user_id=$_SESSION['id'];
             display: flex;
             align-items: center;
             margin-top: 10px;
-            margin-left: 150px;
+            margin-left: 100px;
 
         }
 
@@ -378,7 +370,7 @@ $user_id=$_SESSION['id'];
     <!-- /Wrapper -->
     <div class="wrapper">
         <!-- <div class="row"> -->
-        <div class="col-lg-8">
+        <div class="container emp-profile col-lg-8">
             <div class="wrapper">
 
                 <section class="container-fluid inner-page">
@@ -396,7 +388,6 @@ $user_id=$_SESSION['id'];
 
                                     <input name="file" type="file">
                                     <br><br>
-                                    <input type="password" placeholder="Please enter private key" name="prkey" min="5" required><br><br>
                                     <input type="submit" name="submit">
                                 </div>
                             </form>
@@ -436,7 +427,6 @@ $dbUsername = "root";
 $dbPassword = "";
 $dbName     = "atreyashield";
 
-
 // Create database connection
 $db = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
 
@@ -450,23 +440,30 @@ if (isset($_POST["submit"])) {
     #$title = $_POST["title"]
     $pname = $_FILES["file"]["name"];
     $t_name = $_FILES["file"]["tmp_name"];
-    $privateKey= $_POST["prkey"];
-    echo $privateKey;
+
     
 
     // The path and filename of the encrypted file to be saved
     $encrypted_file_path = 'uploads/';
 
-    include('aes-enc.php');
-    encryptFile($pname, 'uploads/encrypted_'.$pname, '*&@zxor)#^!+=]'.$privateKey.')#^!+=]*&@zxor');
+    $filename = $pname;
+    $key = openssl_random_pseudo_bytes(16); // 16 bytes for AES-128, 24 bytes for AES-192, and 32 bytes for AES-256
+    $cipher_method = "AES-128-CBC";
+    $iv_length = openssl_cipher_iv_length($cipher_method);
+    $iv = openssl_random_pseudo_bytes($iv_length);
+    $options = OPENSSL_RAW_DATA;
+    $data = file_get_contents($filename);
+    $ciphertext = openssl_encrypt($data, $cipher_method, $key, $options, $iv);
+    $encrypted_filename = $encrypted_file_path."encrypted_" . $filename;
+    file_put_contents($encrypted_filename, $iv . $ciphertext);
+    $encrypted_filename1 = "encrypted_" . $filename;
+    //echo "Key: " . base64_encode($key) . "\n";
+   
     
     move_uploaded_file($t_name, 'uploads/' . $pname);
-    date_default_timezone_set("Asia/Kolkata");
-	$time= date('h:i:sa');
-    $date= date('y-m-d');
-    $encrypted_filename= ("encrypted_".$pname);
+
     #sql query to upload
-    $sql = "INSERT into files(`image`, `owner_id`,`uploadTime`,`uploadDate`,`privateKey`) VALUES('$encrypted_filename','$user_id','$time','$date','$privateKey')";
+    $sql = "INSERT into files(image) VALUES('$encrypted_filename1')";
 
     if (mysqli_query($db, $sql)) {
         echo "File Successfully Uploaded";

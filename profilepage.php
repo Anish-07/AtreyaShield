@@ -1,15 +1,68 @@
-<?php include('sidebar.php')
+<?php include('sidebar.php');
+$user_id=$_SESSION['id'];
+// include('session_manager.php');
 ?>
+
+<?php
+// Include the database configuration file
+#include 'db-config.php';
+// Database configuration
+$dbHost     = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName     = "atreyashield";
+
+// Create database connection
+$db = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
+
+// Check connection
+#if ($db->connect_error) {
+#die("Connection failed: " . $db->connect_error);
+#}
+#$sql2 = 0;
+$sql2 = "SELECT * from users WHERE `owner_id`='$user_id'";
+$result = mysqli_query($db, $sql2);
+
+    if (mysqli_query($db, $sql2)) {
+        //echo $result;
+    } else {
+        echo "Hello";
+    }
+
+if (isset($_POST["submit"])) {
+    #$title = $_POST["title"]
+    $pname = rand(1000, 1000) . "-" . $_FILES["file"]["name"];
+    $t_name = $_FILES["file"]["tmp_name"];
+
+    $uploads_dir = 'uploads/';
+
+    move_uploaded_file($t_name, $uploads_dir . '/' . $pname);
+
+}
+
+?><br>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <Style>
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+            text-rendering: optimizeLegibility;
+        }
+        
         body {
             background: #252525;
+            margin-left: 50px;
+            margin-top: 15px;
         }
 
         .emp-profile {
@@ -125,71 +178,41 @@
         }
     </Style>
 </head>
-<div class="container emp-profile">
+<div class="container emp-profile col-lg-8">
     <form method="post">
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" style="border-radius: 70%" />
                     <!-- <div class="file btn btn-lg btn-primary">
                         Change Photo
                         <input type="file" name="file" />
                     </div> -->
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="profile-head">
-                    <!-- <h5>
-                        Kshiti Ghelani
-                    </h5> -->
-                    <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">About</a>
-                        </li>
-                    </ul> -->
-                </div>
+            <div class="row col-md-8">
+                <table class="table table-info table-striped">
+                    <tr>
+                        <th scope="row">User ID</th>
+                        <td>Kshiti123</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>Kshiti Ghelani</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>kshitighelani123@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Profession</th>
+                        <td>Web Developer and Designer</td>
+                    </tr>
+                </table>  
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>User Id</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Kshiti123</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Name</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Kshiti Ghelani</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Email</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>kshitighelani@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Profession</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Web Developer and Designer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            
+        </div><br>
+        
     </form>
 </div>
 </body>

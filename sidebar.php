@@ -1,3 +1,5 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -25,8 +27,8 @@
             font-size: 14px;
             line-height: 1.4;
             margin-left: 30px;
-            margin-top: 4 0px;
-        }
+            margin-top: 40px;
+        }   
 
         nav {
             float: left;
@@ -47,6 +49,7 @@
             background: #252525;
             text-transform: uppercase;
             transition: all .4s ease-out;
+            list-style-type: none
         }
 
         nav ul li:after {
@@ -64,17 +67,17 @@
         }
 
         nav ul li:nth-child(1):after {
-            content: "Home";
+            content: "My Files";
             line-height: 88px;
         }
 
         nav ul li:nth-child(2):after {
-            content: "Myfile";
+            content: "Upload Files";
             line-height: 88px;
         }
 
         nav ul li:nth-child(3):after {
-            content: "Shared withme";
+            content: "Shared with me";
             line-height: 88px;
         }
 
@@ -84,11 +87,6 @@
         }
 
         nav ul li:nth-child(5):after {
-            content: "Profile";
-            line-height: 73px;
-        }
-
-        nav ul li:nth-child(6):after {
             content: "Sign out";
             line-height: 73px;
         }
@@ -326,41 +324,6 @@
             border-color: transparent transparent white transparent;
         }
 
-        .gg-profile,
-        .gg-profile::after,
-        .gg-profile::before {
-            display: block;
-            box-sizing: border-box;
-            border: 2px solid;
-            border-radius: 100px
-        }
-
-        .gg-profile {
-            overflow: hidden;
-            transform: scale(var(--ggs, 1));
-            width: 22px;
-            height: 22px;
-            position: relative
-        }
-
-        .gg-profile::after,
-        .gg-profile::before {
-            content: "";
-            position: absolute;
-            top: 2px;
-            left: 5px;
-            width: 8px;
-            height: 8px
-        }
-
-        .gg-profile::after {
-            border-radius: 200px;
-            top: 11px;
-            left: 0px;
-            width: 18px;
-            height: 18px
-        }
-
         .gg-log-out {
             box-sizing: border-box;
             position: relative;
@@ -407,7 +370,7 @@
 <body>
     <nav>
         <ul>
-            <li>
+            <li onclick= "location.href='dashboard_myFiles.php'">
                 <div class="home-icon">
                     <div class="roof">
                         <div class="roof-edge"></div>
@@ -415,7 +378,7 @@
                     <div class="front"></div>
                 </div>
             </li>
-            <li>
+            <li onclick= "location.href='dashboard.php'">
                 <div class="work-icon">
                     <div class="paper"></div>
                     <div class="lines"></div>
@@ -423,7 +386,7 @@
                     <div class="lines"></div>
                 </div>
             </li>
-            <li>
+            <li onclick= "location.href=''">
                 <div class="about-icon">
                     <div class="head">
                         <div class="eyes"></div>
@@ -431,22 +394,18 @@
                     </div>
                 </div>
             </li>
-            <li>
+            <li onclick= "location.href=''">
                 <div class="mail-icon">
                     <div class="mail-base">
                         <div class="mail-top"></div>
                     </div>
                 </div>
             </li>
-            <li>
-                <div><i class="gg-profile"></i></div>
-                </div>
-                </div>
-            </li>
-            <li>
-                <div><i class="gg-log-out"></i></div>
-                </div>
-                </div>
+            <!-- <li onclick= "location.href='profilepage.php'">
+                <div><img src="icons8-male-user-30.png"></div>
+            </li> -->
+            <li onclick= "location.href='logout.php';">
+                <div><img src="icons8-logout-30.png"></div>
             </li>
         </ul>
     </nav>
