@@ -1,6 +1,6 @@
-<?php include('sidebar.php');
-include('session_manager.php');
-$user_id=$_SESSION['id'];
+<?php include('session_manager.php');
+include('sidebar.php');
+$user_id = $_SESSION['id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@ $user_id=$_SESSION['id'];
             margin-left: 20px;
         }
 
-        body{
+        body {
             margin-top: 0px;
         }
 
@@ -405,10 +405,10 @@ $user_id=$_SESSION['id'];
                             <span>Maximum file size is 25MB.</span>
 
 
-                <!- Warnings -->
-                            <div id="warnings">
-                                <span>Warnings will go here!</span>
-                            </div>
+                            <!- Warnings -->
+                                <div id="warnings">
+                                    <span>Warnings will go here!</span>
+                                </div>
 
                         </div>
                     </div><!-- /End row -->
@@ -441,37 +441,29 @@ $dbName     = "atreyashield";
 $db = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
 
 define('SITE_ROOT', realpath(dirname(__FILE__)));
-// Check connection
-#if ($db->connect_error) {
-#die("Connection failed: " . $db->connect_error);
-#}
-#$files = 0;
+
 if (isset($_POST["submit"])) {
-    #$title = $_POST["title"]
     $pname = $_FILES["file"]["name"];
     $t_name = $_FILES["file"]["tmp_name"];
-    $privateKey= $_POST["prkey"];
-    echo $privateKey;
-    
-
-    // The path and filename of the encrypted file to be saved
-    $encrypted_file_path = 'uploads/';
+    $privateKey = $_POST["prkey"];
 
     include('aes-enc.php');
-    encryptFile($pname, 'uploads/encrypted_'.$pname, '*&@zxor)#^!+=]'.$privateKey.')#^!+=]*&@zxor');
-    
-    move_uploaded_file($t_name, 'uploads/' . $pname);
     date_default_timezone_set("Asia/Kolkata");
-	$time= date('h:i:sa');
-    $date= date('y-m-d');
-    $encrypted_filename= ("encrypted_".$pname);
+    $time = date('h:i:sa');
+    $date = date('y-m-d');
+    $filetime= date('hisa');
+    $filedate= date('ymd');
+    encryptFile('E:/SEM 6/EH/' . $pname, 'serverupload/'.$filedate.$filetime."_encrypted".$pname, '*&@zxor)#^!+=]' . $privateKey . ')#^!+=]*&@zxor');
+
+    move_uploaded_file($t_name, 'serverupload/' . $filedate.$filetime."_encrypted".$pname);
+    $encrypted_filename = ($filedate.$filetime."_encrypted".$pname);
     #sql query to upload
     $sql = "INSERT into files(`image`, `owner_id`,`uploadTime`,`uploadDate`,`privateKey`) VALUES('$encrypted_filename','$user_id','$time','$date','$privateKey')";
 
     if (mysqli_query($db, $sql)) {
         echo "File Successfully Uploaded";
     } else {
-        echo "Error";
+        echo "File not uploaded. Please try again";
     }
 }
 

@@ -6,8 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Julee">
   <title>AtreyaShield</title>
@@ -58,7 +57,7 @@
         </div>
       </div>
       <div class="col-lg-6">
-        <img src="HomePageImg3.png" width="75%" style="margin-left: 20px; width: 94%; height: 75%;">
+        <img src="Images/HomePageImg3.png" width="75%" style="margin-left: 20px; width: 94%; height: 75%;">
       </div>
       <!-- HTML !-->
     </div>

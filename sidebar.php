@@ -1,5 +1,3 @@
-<?php session_start();
-?>
 <!DOCTYPE html>
 <html>
 
@@ -405,7 +403,7 @@
                 <div><img src="icons8-male-user-30.png"></div>
             </li> -->
             <li onclick= "location.href='logout.php';">
-                <div><img src="icons8-logout-30.png"></div>
+                <div><img src="Images/icons8-logout-30.png"></div>
             </li>
         </ul>
     </nav>

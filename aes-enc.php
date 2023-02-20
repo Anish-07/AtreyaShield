@@ -47,6 +47,6 @@ function encryptFile($source, $dest, $key)
 
 
 // encryptFile('prac1.txt', 'encrypted_prac1.txt', 'mihir123');
-echo $fpDest;
-echo "File encrypted!\n";
-echo 'Memory usage: ' . round(memory_get_usage() / 1048576, 2) . "M\n";
+// echo $fpDest;
+// echo "File encrypted!\n";
+// echo 'Memory usage: ' . round(memory_get_usage() / 1048576, 2) . "M\n";

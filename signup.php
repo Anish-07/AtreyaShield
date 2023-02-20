@@ -31,7 +31,7 @@ try {
     		echo "<html><head><title></title><body><h2 style='color: #CCFF00;'>Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special!!</h2></body></head></html>";
 		}
 		else if ($password == $conpassword) {
-			$sql = "INSERT into users (username, recovery_email, password, is_active, public_key, private_key, last_login) VALUES('$name', '$email', MD5('$password'), '1', 'pub', 'priv','$date')";
+			$sql = "INSERT into users (username, recovery_email, password, is_active, last_login) VALUES('$name', '$email', MD5('$password'), '1', '$date')";
 			if (mysqli_query($db, $sql) == 1) {
 				header("location:signup.php");
 			}

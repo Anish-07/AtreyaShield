@@ -2,7 +2,6 @@
 session_start();
 
 $file = $_SERVER["SCRIPT_NAME"];
-echo $file;
 
 
 if ( $file == "/AtreyaShield-main/signup.php") {
